@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kathy Skelly — Director, Women's &amp; Children's | Trillium Health Partners</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep-teal: #1b3344;
+  --teal: #357A90;
+  --warm-gold: #c4973b;
+  --gold-light: #dbb76a;
+  --cream: #f4f6f7;
+  --warm-white: #fafbfc;
+  --text-primary: #1b2d38;
+  --text-secondary: #4a6270;
+  --text-light: #7a939e;
+  --border: #d8dee2;
+  --accent-rose: #8b4e52;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+  background: var(--warm-white);
+  line-height: 1.7;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.25rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.4s ease;
+  background: transparent;
+}
+
+nav.scrolled {
+  background: rgba(250, 251, 252, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--border);
+  padding: 0.9rem 3rem;
+}
+
+.nav-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--deep-teal);
+  letter-spacing: 0.02em;
+}
+
+nav.hero-nav .nav-name { color: var(--cream); }
+nav.scrolled .nav-name { color: var(--deep-teal); }
+
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+nav.hero-nav .nav-links a { color: rgba(240, 244, 248, 0.75); }
+nav.hero-nav .nav-links a:hover { color: var(--cream); }
+nav.scrolled .nav-links a { color: var(--text-secondary); }
+nav.scrolled .nav-links a:hover { color: var(--deep-teal); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #1b3344 0%, #2a5d72 40%, #357A90 70%, #1b3344 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(196, 151, 59, 0.1) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 80% 20%, rgba(53, 122, 144, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  max-width: 1000px;
+  padding: 2rem;
+}
+
+.hero-photo {
+  flex-shrink: 0;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(196, 151, 59, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s forwards;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-text {
+  text-align: left;
+}
+
+.hero-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-indent: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  font-weight: 400;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.3s forwards;
+}
+
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.5s forwards;
+}
+
+.hero-title {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(240, 244, 248, 0.7);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.7s forwards;
+}
+
+.hero-org {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: rgba(240, 244, 248, 0.5);
+  letter-spacing: 0.02em;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.9s forwards;
+}
+
+.hero-divider {
+  width: 50px;
+  height: 1px;
+  background: var(--warm-gold);
+  margin: 1.5rem 0;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.65s forwards;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 1.2s forwards;
+}
+
+.scroll-indicator span {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
+  text-transform: uppercase;
+  color: rgba(240, 244, 248, 0.35);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--warm-gold), transparent);
+  animation: scrollPulse 2s ease infinite;
+}
+
+/* ─── SECTIONS ─── */
+section { padding: 6rem 3rem; }
+.section-inner { max-width: 900px; margin: 0 auto; }
+
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--warm-gold);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.section-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 500;
+  color: var(--deep-teal);
+  line-height: 1.25;
+  margin-bottom: 2rem;
+}
+
+/* ─── ABOUT ─── */
+.about { background: var(--cream); }
+
+.about-text {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--text-secondary);
+  max-width: 750px;
+}
+
+.about-text p + p { margin-top: 1.5rem; }
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3.5rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border);
+}
+
+.stat { text-align: center; }
+
+.stat-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: var(--deep-teal);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-top: 0.5rem;
+}
+
+/* ─── MY STORY ─── */
+.story { background: var(--warm-white); }
+
+.story-body { max-width: 720px; margin: 0 auto; }
+
+.story-body p {
+  font-size: 1.05rem;
+  line-height: 1.95;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.story-body .story-lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  line-height: 1.65;
+  color: var(--deep-teal);
+  font-weight: 400;
+  margin-bottom: 2rem;
+  border-left: 2px solid var(--warm-gold);
+  padding-left: 1.5rem;
+}
+
+.story-milestone {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: var(--cream);
+  border-radius: 3px;
+}
+
+.story-milestone-year {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--warm-gold);
+  flex-shrink: 0;
+  line-height: 1.3;
+}
+
+.story-milestone-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ─── EXPERTISE ─── */
+.expertise { background: var(--cream); }
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.expertise-card {
+  padding: 2.5rem 2rem;
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.expertise-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: var(--warm-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.expertise-card:hover::before { transform: scaleX(1); }
+.expertise-card:hover {
+  border-color: transparent;
+  box-shadow: 0 8px 30px rgba(27, 51, 68, 0.08);
+}
+
+.expertise-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 1.2rem;
+  display: block;
+  color: var(--teal);
+}
+
+.expertise-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--deep-teal);
+  margin-bottom: 0.8rem;
+}
+
+.expertise-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
+
+/* ─── CASE STUDIES ─── */
+.case-studies { background: var(--warm-white); }
+
+.case-study {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.case-study:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+.case-study-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.case-study-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--warm-gold);
+  opacity: 0.5;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: -0.2rem;
+}
+
+.case-study-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--deep-teal);
+  line-height: 1.3;
+}
+
+.case-study-org {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-top: 0.3rem;
+}
+
+.case-study-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  margin-left: 4.5rem;
+}
+
+.case-study-block h4 {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--warm-gold);
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+
+.case-study-block p { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.75; }
+
+/* ─── CAREER ─── */
+.career { background: var(--deep-teal); color: var(--cream); }
+.career .section-label { color: var(--gold-light); }
+.career .section-heading { color: var(--cream); }
+
+.timeline { margin-top: 1rem; position: relative; }
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 1px;
+  background: rgba(196, 151, 59, 0.25);
+}
+
+.timeline-item { padding-left: 3rem; padding-bottom: 3rem; position: relative; }
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-dot {
+  position: absolute;
+  left: -4px; top: 0.4rem;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--warm-gold);
+}
+
+.timeline-item.current .timeline-dot { box-shadow: 0 0 0 4px rgba(196, 151, 59, 0.2); }
+
+.timeline-dates {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 0.4rem;
+}
+
+.timeline-role {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.timeline-org { font-size: 0.9rem; color: rgba(240, 244, 248, 0.55); margin-bottom: 0.8rem; }
+
+.timeline-desc {
+  font-size: 0.9rem;
+  color: rgba(240, 244, 248, 0.65);
+  line-height: 1.75;
+  max-width: 650px;
+}
+
+/* ─── SPEAKING ─── */
+.speaking { background: var(--cream); }
+
+.speaking-intro {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+
+.speaking-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.speaking-topic {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--warm-white);
+  transition: all 0.4s ease;
+}
+
+.speaking-topic:hover {
+  border-color: var(--warm-gold);
+  box-shadow: 0 4px 20px rgba(27, 51, 68, 0.06);
+}
+
+.speaking-topic-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  background: var(--cream);
+  padding: 9px;
+  color: var(--teal);
+}
+
+.speaking-topic h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--deep-teal);
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+
+.speaking-topic p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
+
+.topic-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+
+.topic-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  background: var(--cream);
+  padding: 0.25rem 0.7rem;
+  border-radius: 1px;
+}
+
+/* ─── PARTNERSHIPS ─── */
+.partnerships { background: var(--warm-white); }
+
+.partnerships-intro {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.partner-card {
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.partner-card:hover {
+  border-color: var(--warm-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(27, 51, 68, 0.06);
+}
+
+.partner-icon {
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  padding: 12px;
+  color: var(--teal);
+}
+
+.partner-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--deep-teal);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.partner-card p { font-size: 0.8rem; color: var(--text-light); line-height: 1.6; }
+
+/* ─── EDUCATION ─── */
+.education { background: var(--cream); }
+
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.edu-card {
+  padding: 2.5rem 2rem;
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+}
+
+.edu-degree {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--deep-teal);
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+
+.edu-school { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.3rem; }
+.edu-year { font-size: 0.75rem; letter-spacing: 0.12em; color: var(--text-light); }
+
+/* ─── PHILOSOPHY QUOTE ─── */
+.philosophy { background: var(--deep-teal); text-align: center; padding: 5rem 3rem; }
+.philosophy .section-inner { max-width: 700px; }
+
+.philosophy-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.55;
+  position: relative;
+  padding: 0 1rem;
+}
+
+.philosophy-quote::before {
+  content: '\201C';
+  font-size: 5rem;
+  color: var(--warm-gold);
+  opacity: 0.3;
+  position: absolute;
+  top: -2.5rem;
+  left: -0.5rem;
+  font-style: normal;
+  line-height: 1;
+}
+
+/* ─── CONNECT ─── */
+.connect { background: var(--cream); text-align: center; }
+.connect .section-inner { max-width: 600px; }
+
+.connect-text {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.connect-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 2.5rem;
+  background: var(--deep-teal);
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 400;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.connect-btn:hover {
+  background: var(--teal);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(27, 51, 68, 0.2);
+}
+
+.connect-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+/* ─── SCROLL DOTS (mobile only, injected by JS) ─── */
+.scroll-dots { display: none; }
+
+/* ─── MEDIA ─── */
+.media { background: var(--warm-white); }
+
+.media-intro {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.media-card {
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.media-video-link {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.media-video-link img {
+  width: 100%;
+  display: block;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.media-video-link:hover img {
+  transform: scale(1.03);
+  filter: brightness(0.85);
+}
+
+.media-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.85;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.media-video-link:hover .media-play-btn {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.media-caption {
+  padding: 1.5rem;
+}
+
+.media-caption h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--deep-teal);
+  margin-bottom: 0.3rem;
+}
+
+.media-caption p {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* ─── FOOTER ─── */
+footer { background: var(--deep-teal); padding: 3rem; text-align: center; }
+
+.footer-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 0.75rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(240, 244, 248, 0.45);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--gold-light); }
+.footer-copy { font-size: 0.72rem; color: rgba(240, 244, 248, 0.25); }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── MOBILE ─── */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px; height: 1.5px;
+  background: var(--cream);
+  margin: 5px 0;
+  transition: all 0.3s;
+}
+
+nav.scrolled .nav-toggle span { background: var(--deep-teal); }
+
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  nav.scrolled { padding: 0.8rem 1.5rem; }
+  .nav-toggle { display: block; }
+
+  .nav-links {
+    position: fixed;
+    top: 0; right: -100%;
+    width: 75%; max-width: 300px;
+    height: 100vh;
+    background: var(--deep-teal);
+    flex-direction: column;
+    padding: 5rem 2rem 2rem;
+    gap: 1.5rem;
+    transition: right 0.35s ease;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.2);
+  }
+
+  .nav-links.open { right: 0; }
+  .nav-links a { color: rgba(240, 244, 248, 0.75) !important; font-size: 0.85rem; }
+
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 98;
+  }
+  .nav-overlay.open { display: block; }
+
+  section { padding: 4rem 1.5rem; }
+  .stats-row { grid-template-columns: 1fr; gap: 1.5rem; }
+
+  /* ─── MOBILE HORIZONTAL SCROLL ─── */
+  .expertise-grid,
+  .speaking-grid,
+  .partners-grid,
+  .edu-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .expertise-grid::after,
+  .speaking-grid::after,
+  .partners-grid::after,
+  .edu-grid::after {
+    content: '';
+    flex-shrink: 0;
+    width: 0.5rem;
+  }
+
+  .expertise-card,
+  .speaking-topic,
+  .partner-card,
+  .edu-card {
+    flex: 0 0 78%;
+    max-width: 78%;
+    scroll-snap-align: center;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .expertise-grid,
+  .speaking-grid,
+  .partners-grid,
+  .edu-grid {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .expertise-grid::-webkit-scrollbar,
+  .speaking-grid::-webkit-scrollbar,
+  .partners-grid::-webkit-scrollbar,
+  .edu-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .media-grid { grid-template-columns: 1fr; }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .hero-text { text-align: center; }
+
+  .hero-divider { margin: 1.5rem auto; }
+
+  .hero-photo { width: 220px; height: 220px; }
+
+  .case-study-body { grid-template-columns: 1fr; margin-left: 0; gap: 1.2rem; }
+  .case-study-header { gap: 1rem; }
+  .case-study-number { font-size: 2.2rem; }
+  .timeline-item { padding-left: 2rem; }
+  .story-milestone { flex-direction: column; gap: 0.5rem; }
+
+  /* ─── SCROLL DOT INDICATORS ─── */
+  .scroll-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .scroll-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: background 0.3s, transform 0.3s;
+  }
+
+  .scroll-dot.active {
+    background: var(--teal);
+    transform: scale(1.2);
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="hero-nav" id="nav">
+  <div class="nav-name">Kathy Skelly</div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#story">My Story</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#career">Career</a></li>
+    <li><a href="#speaking">Speaking</a></li>
+    <li><a href="#connect">Connect</a></li>
+  </ul>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-photo">
+      <img src="Kathy_headshot_4.png" alt="Kathy Skelly">
+    </div>
+    <div class="hero-text">
+      <p class="hero-label">Healthcare Leadership</p>
+      <h1 class="hero-name">Kathy Skelly</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-title">Director, Women's &amp; Children's Program</p>
+      <p class="hero-org">Trillium Health Partners &nbsp;·&nbsp; Mississauga, Ontario</p>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <p class="section-label reveal">About</p>
+    <h2 class="section-heading reveal">Leading with Purpose, Delivering with Care</h2>
+    <div class="about-text reveal">
+      <p>A progressive leader in healthcare with deep expertise in clinical management, program development, and organizational growth, Kathy has built a career defined by her ability to cultivate high-performing teams and champion patient-centred care across some of Ontario's most respected health systems.</p>
+      <p>Her leadership philosophy is rooted in approachability and visibility — connecting authentically with teams at every level, building partnerships that extend well beyond hospital walls, and creating the conditions for both clinical excellence and workplace culture to thrive.</p>
+    </div>
+    <div class="stats-row reveal">
+      <div class="stat">
+        <div class="stat-number">25+</div>
+        <div class="stat-label">Years in Healthcare</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">Years at Trillium</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">200+</div>
+        <div class="stat-label">Team Members Led</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MY STORY -->
+<section class="story" id="story">
+  <div class="section-inner">
+    <p class="section-label reveal">My Story</p>
+    <h2 class="section-heading reveal">From Bedside to Boardroom</h2>
+    <div class="story-body">
+      <p class="story-lead reveal">I didn't begin my career in a corner office. I began it at the bedside of a child fighting cancer — and that starting point has shaped every decision I've made as a leader since.</p>
+
+      <p class="reveal">After completing my nursing diploma at Algonquin College, I took my first position at the Children's Hospital of Eastern Ontario in Ottawa, working in paediatric oncology. It was there — helping children and families navigate some of the most difficult experiences of their lives — that I discovered what mattered most to me in healthcare: not just delivering care, but building the systems, teams, and culture that make extraordinary care possible.</p>
+
+      <div class="story-milestone reveal">
+        <div class="story-milestone-year">1999</div>
+        <div class="story-milestone-text">Joined The Hospital for Sick Children in Toronto, where I would spend a decade in paediatric oncology, eventually leading clinical orientation programs and serving as charge nurse across the Hematology/Oncology/BMT unit.</div>
+      </div>
+
+      <p class="reveal">A decade at SickKids gave me the clinical foundation and the leadership instincts that would define the rest of my career. I saw firsthand how the right orientation program could set a new nurse up for success — or how a gap in teamwork could put a patient at risk. That's where I first started thinking about healthcare not just as clinical practice, but as systems design.</p>
+
+      <div class="story-milestone reveal">
+        <div class="story-milestone-year">2008</div>
+        <div class="story-milestone-text">Moved to Hamilton Health Sciences, where progressive roles in quality improvement, clinical education, and patient flow consulting at McMaster Children's Hospital laid the groundwork for the leap into management.</div>
+      </div>
+
+      <p class="reveal">At McMaster, I helped develop high-fidelity simulation training for trauma and resuscitation, built emergency disaster management protocols, and co-created the Pediatric Emergency Reassessment Clinic — a project that reduced unnecessary return visits and improved the patient experience. Those years taught me that real innovation in healthcare comes from listening to frontline teams and giving them the tools and authority to solve problems.</p>
+
+      <div class="story-milestone reveal">
+        <div class="story-milestone-year">2012</div>
+        <div class="story-milestone-text">Took on the Manager role for Joseph Brant Hospital's Emergency Department — a $6M operation with a 200+ person workforce and a major facility redevelopment underway.</div>
+      </div>
+
+      <p class="reveal">Joseph Brant was where leadership became operational: managing complex labour relations across three collective agreements, leading a full ED strategic plan for a new patient tower, and turning pay-for-performance metrics into tangible improvements in patient throughput and care quality. It was the hardest three years of my career, and the most formative.</p>
+
+      <div class="story-milestone reveal">
+        <div class="story-milestone-year">2015</div>
+        <div class="story-milestone-text">Joined Trillium Health Partners — Ontario's largest community hospital — to manage and grow the Women's and Children's portfolio, a role that would expand into the Director position she holds today.</div>
+      </div>
+
+      <p class="reveal">In 2015, I joined Trillium Health Partners, where I've now spent over a decade building and leading the Women's and Children's portfolio. From clinical manager to my current role as Director, I've had the privilege of guiding our paediatric and maternal health programs through growth, a global pandemic, and ongoing transformation — always anchored by the same principle that drew me to nursing in the first place: that every patient is someone's child, someone's parent, someone's whole world.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="expertise" id="expertise">
+  <div class="section-inner">
+    <p class="section-label reveal">Areas of Focus</p>
+    <h2 class="section-heading reveal">Expertise</h2>
+    <div class="expertise-grid">
+      <div class="expertise-card reveal">
+        <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 12.572l-7.5 7.428-7.5-7.428a5 5 0 1 1 7.5-6.566 5 5 0 1 1 7.5 6.566z"/><path d="M12 6v4l2 2"/></svg>
+        <h3>Women's &amp; Children's Health</h3>
+        <p>Leading the full Women's and Children's portfolio across ambulatory and inpatient care, ensuring excellence in paediatric and maternal health programs.</p>
+      </div>
+      <div class="expertise-card reveal">
+        <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        <h3>Quality &amp; Patient Safety</h3>
+        <p>Driving continuous improvement culture through evidence-based practice, quality initiatives, and unwavering commitment to patient advocacy.</p>
+      </div>
+      <div class="expertise-card reveal">
+        <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <h3>Team Development</h3>
+        <p>Building psychologically safe environments where diverse teams thrive — from workforce planning and education to mentoring and performance excellence.</p>
+      </div>
+      <div class="expertise-card reveal">
+        <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <h3>Operational Leadership</h3>
+        <p>Managing complex multi-million-dollar budgets, redevelopment projects, and vendor relationships while driving operational efficiency and innovation.</p>
+      </div>
+      <div class="expertise-card reveal">
+        <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <h3>Strategic Partnerships</h3>
+        <p>Cultivating partnerships with organizations including POGO, Ronald McDonald House, Erin Oak Kids, and municipal stakeholders to expand care delivery.</p>
+      </div>
+      <div class="expertise-card reveal">
+        <svg class="expertise-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <h3>Emergency &amp; Crisis Leadership</h3>
+        <p>Proven leadership through pandemic response, emergency department management, and disaster preparedness including CBRN protocol development.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="case-studies" id="impact">
+  <div class="section-inner">
+    <p class="section-label reveal">Signature Impact</p>
+    <h2 class="section-heading reveal">Leadership in Action</h2>
+
+    <div class="case-study reveal">
+      <div class="case-study-header">
+        <div class="case-study-number">01</div>
+        <div>
+          <div class="case-study-title">Building the Pediatric Emergency Reassessment Clinic</div>
+          <div class="case-study-org">McMaster Children's Hospital, Hamilton Health Sciences</div>
+        </div>
+      </div>
+      <div class="case-study-body">
+        <div class="case-study-block">
+          <h4>The Challenge</h4>
+          <p>Paediatric emergency patients frequently returned to the ED for reassessment, straining capacity and creating a fragmented experience for families already under stress.</p>
+        </div>
+        <div class="case-study-block">
+          <h4>The Approach</h4>
+          <p>Co-designed and implemented the PERC — a dedicated reassessment pathway that redirected follow-up patients to a purpose-built clinic, developed in collaboration with ED leadership and frontline staff.</p>
+        </div>
+        <div class="case-study-block">
+          <h4>The Impact</h4>
+          <p>Reduced unnecessary ED return visits, improved patient flow and family satisfaction, and demonstrated a replicable model for paediatric emergency programs.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-study reveal">
+      <div class="case-study-header">
+        <div class="case-study-number">02</div>
+        <div>
+          <div class="case-study-title">Leading ED Redevelopment at Joseph Brant Hospital</div>
+          <div class="case-study-org">Joseph Brant Hospital, Burlington</div>
+        </div>
+      </div>
+      <div class="case-study-body">
+        <div class="case-study-block">
+          <h4>The Challenge</h4>
+          <p>A major hospital expansion — the new Michael Lee-Chin and Family Patient Tower — required the Emergency Department to develop a comprehensive strategic and operational plan for a redesigned care environment.</p>
+        </div>
+        <div class="case-study-block">
+          <h4>The Approach</h4>
+          <p>Led the full ED strategic plan for redevelopment, balancing daily operational demands of a 200+ person workforce with the design, planning, and stakeholder coordination required for the new facility.</p>
+        </div>
+        <div class="case-study-block">
+          <h4>The Impact</h4>
+          <p>Delivered a modernized ED with improvements to input, throughput, and output metrics, and measurable gains in pay-for-performance benchmarks that reflected better patient care and operational efficiency.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-study reveal">
+      <div class="case-study-header">
+        <div class="case-study-number">03</div>
+        <div>
+          <div class="case-study-title">Pandemic PPE Standardization Across Trillium Health Partners</div>
+          <div class="case-study-org">Trillium Health Partners, Mississauga</div>
+        </div>
+      </div>
+      <div class="case-study-body">
+        <div class="case-study-block">
+          <h4>The Challenge</h4>
+          <p>When COVID-19 arrived in early 2020, Trillium faced urgent, evolving PPE requirements across a large multi-site organization with thousands of frontline staff.</p>
+        </div>
+        <div class="case-study-block">
+          <h4>The Approach</h4>
+          <p>Took on the role of Pandemic PPE Lead, developing standardized protocols for selection, use, and education. Built training programs that could scale quickly while maintaining clinical safety standards.</p>
+        </div>
+        <div class="case-study-block">
+          <h4>The Impact</h4>
+          <p>Established a consistent, organization-wide PPE standard during the most critical phase of the pandemic, ensuring staff safety and regulatory compliance amid rapidly changing guidance.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-study reveal">
+      <div class="case-study-header">
+        <div class="case-study-number">04</div>
+        <div>
+          <div class="case-study-title">Growing Community Partnerships for Paediatric Care</div>
+          <div class="case-study-org">Trillium Health Partners, Mississauga</div>
+        </div>
+      </div>
+      <div class="case-study-body">
+        <div class="case-study-block">
+          <h4>The Challenge</h4>
+          <p>Children's health services extend far beyond hospital walls. The paediatric program needed community partnerships to deliver holistic care to a diverse, growing population.</p>
+        </div>
+        <div class="case-study-block">
+          <h4>The Approach</h4>
+          <p>Built and sustained partnerships with POGO, Ronald McDonald House, Erin Oak Kids, the City of Mississauga, and other stakeholders to create alternative service delivery models and community programming.</p>
+        </div>
+        <div class="case-study-block">
+          <h4>The Impact</h4>
+          <p>Expanded the reach of paediatric services through collaborative models, strengthened community engagement through public events, and created sustainable support structures for children and families.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER -->
+<section class="career" id="career">
+  <div class="section-inner">
+    <p class="section-label reveal">Career</p>
+    <h2 class="section-heading reveal">Professional Journey</h2>
+    <div class="timeline">
+      <div class="timeline-item current reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-dates">May 2023 – Present</div>
+        <div class="timeline-role">Director, Women's &amp; Children's Program</div>
+        <div class="timeline-org">Trillium Health Partners &nbsp;·&nbsp; Mississauga, Ontario</div>
+        <div class="timeline-desc">Leading the strategic direction and operational excellence of the full Women's and Children's portfolio, with a focus on continuous improvement, psychological safety, and emerging trends in paediatric and maternal care.</div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-dates">Jun 2015 – May 2023</div>
+        <div class="timeline-role">Clinical Manager, Paediatric Inpatient &amp; Ambulatory Care</div>
+        <div class="timeline-org">Trillium Health Partners</div>
+        <div class="timeline-desc">Managed the Women's and Children's portfolio with focus on paediatric programs. Responsibilities spanned workforce planning, budget management, regulatory compliance, community partnerships, and facility redevelopment.</div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-dates">Apr 2020 – Jun 2021</div>
+        <div class="timeline-role">Pandemic PPE Lead: Standardization &amp; Implementation</div>
+        <div class="timeline-org">Trillium Health Partners</div>
+        <div class="timeline-desc">Led PPE protocol standardization, implementation, and education across the organization during the COVID-19 pandemic.</div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-dates">Jun 2012 – Jun 2015</div>
+        <div class="timeline-role">Manager, Emergency Department</div>
+        <div class="timeline-org">Joseph Brant Hospital &nbsp;·&nbsp; Burlington</div>
+        <div class="timeline-desc">Full operational accountability for ED service delivery, managing a 200+ workforce across three collective agreements. Led ED strategic planning for the new Michael Lee-Chin Patient Tower and managed a $6 million annual budget.</div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-dates">2008 – 2012</div>
+        <div class="timeline-role">RN, Clinical Educator, Quality Facilitator, Patient Flow Consultant</div>
+        <div class="timeline-org">Hamilton Health Sciences &nbsp;·&nbsp; McMaster Children's Hospital</div>
+        <div class="timeline-desc">Progressive clinical and leadership roles including quality and safety culture development, high-fidelity simulation education, emergency disaster management, and the Pediatric Emergency Reassessment Clinic.</div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-dates">1998 – 2008</div>
+        <div class="timeline-role">Charge Nurse &amp; Clinical Orientation Lead</div>
+        <div class="timeline-org">The Hospital for Sick Children &nbsp;·&nbsp; Toronto</div>
+        <div class="timeline-desc">A decade at SickKids spanning paediatric oncology, clinical orientation program development, and charge nurse leadership across the Hematology/Oncology/BMT unit.</div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-dates">1998 – 1999</div>
+        <div class="timeline-role">Registered Nurse, Paediatric Oncology</div>
+        <div class="timeline-org">Children's Hospital of Eastern Ontario &nbsp;·&nbsp; Ottawa</div>
+        <div class="timeline-desc">Began her nursing career in paediatric oncology, providing care across day surgery, chemotherapy, dialysis, and specialized programs.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPEAKING -->
+<section class="speaking" id="speaking">
+  <div class="section-inner">
+    <p class="section-label reveal">Thought Leadership</p>
+    <h2 class="section-heading reveal">Speaking &amp; Topics</h2>
+    <p class="speaking-intro reveal">Kathy brings over two decades of frontline and executive healthcare experience to conversations about leadership, quality, and the future of paediatric and women's health in Canada.</p>
+
+    <div class="speaking-grid">
+      <div class="speaking-topic reveal">
+        <div class="speaking-topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
+        <h3>Bedside to Boardroom: What Clinical Leaders Bring to the Table</h3>
+        <p>How frontline nursing experience creates a fundamentally different kind of healthcare executive, and why organizations benefit from clinical leadership pipelines.</p>
+        <div class="topic-tags">
+          <span class="topic-tag">Leadership</span>
+          <span class="topic-tag">Nursing</span>
+          <span class="topic-tag">Career Development</span>
+        </div>
+      </div>
+      <div class="speaking-topic reveal">
+        <div class="speaking-topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8c-1.5 0-3 1-3 2.5S12 14 12 14s3-1 3-3.5S13.5 8 12 8z"/></svg></div>
+        <h3>Psychological Safety in High-Stakes Clinical Environments</h3>
+        <p>Practical strategies for fostering trust, openness, and accountability in teams where the margin for error is thin and the emotional stakes are high.</p>
+        <div class="topic-tags">
+          <span class="topic-tag">Culture</span>
+          <span class="topic-tag">Team Development</span>
+          <span class="topic-tag">Patient Safety</span>
+        </div>
+      </div>
+      <div class="speaking-topic reveal">
+        <div class="speaking-topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></div>
+        <h3>Paediatric Care in a Changing Landscape</h3>
+        <p>How children's health programs are evolving to meet the needs of growing, diverse communities — from community partnerships to alternative service delivery models.</p>
+        <div class="topic-tags">
+          <span class="topic-tag">Paediatrics</span>
+          <span class="topic-tag">Innovation</span>
+          <span class="topic-tag">Community Health</span>
+        </div>
+      </div>
+      <div class="speaking-topic reveal">
+        <div class="speaking-topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <h3>Leading Through Crisis: Lessons from Pandemic Response</h3>
+        <p>What organizational PPE standardization during COVID-19 taught about rapid decision-making, staff communication, and leading when the playbook doesn't exist yet.</p>
+        <div class="topic-tags">
+          <span class="topic-tag">Crisis Leadership</span>
+          <span class="topic-tag">Pandemic</span>
+          <span class="topic-tag">Change Management</span>
+        </div>
+      </div>
+      <div class="speaking-topic reveal">
+        <div class="speaking-topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <h3>Continuous Improvement as Culture, Not Compliance</h3>
+        <p>Moving quality improvement from a checklist exercise to an embedded organizational value — and the leadership behaviours that make the difference.</p>
+        <div class="topic-tags">
+          <span class="topic-tag">Quality</span>
+          <span class="topic-tag">Continuous Improvement</span>
+          <span class="topic-tag">Leadership</span>
+        </div>
+      </div>
+      <div class="speaking-topic reveal">
+        <div class="speaking-topic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>Partnerships Beyond the Hospital: Expanding the Circle of Care</h3>
+        <p>How building authentic relationships with community organizations, government, and corporate partners creates better outcomes for patients and more resilient health systems.</p>
+        <div class="topic-tags">
+          <span class="topic-tag">Partnerships</span>
+          <span class="topic-tag">Community</span>
+          <span class="topic-tag">Strategy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA -->
+<section class="media" id="media">
+  <div class="section-inner">
+    <p class="section-label reveal">Media &amp; Appearances</p>
+    <h2 class="section-heading reveal">In the Field</h2>
+    <p class="media-intro reveal">Kathy has appeared in institutional video content highlighting the work of Trillium Health Partners' Women's and Children's programs.</p>
+    <div class="media-grid">
+      <div class="media-card reveal">
+        <a href="https://www.youtube.com/watch?v=_lttZJH7AmQ" target="_blank" rel="noopener" class="media-video-link">
+          <img src="Kathy_youtube.png" alt="Kathy Skelly — Trillium Health Partners video">
+          <div class="media-play-btn">
+            <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+          </div>
+        </a>
+        <div class="media-caption">
+          <h4>Trillium Health Partners</h4>
+          <p>Kathy speaks about the Women's and Children's programs at Trillium Health Partners.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERSHIPS -->
+<section class="partnerships" id="partnerships">
+  <div class="section-inner">
+    <p class="section-label reveal">Community &amp; Partnerships</p>
+    <h2 class="section-heading reveal">Building a Circle of Care</h2>
+    <p class="partnerships-intro reveal">Throughout her career, Kathy has built and sustained partnerships with organizations that extend the reach of hospital-based care into the communities that need it most.</p>
+
+    <div class="partners-grid">
+      <div class="partner-card reveal">
+        <div class="partner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M20 8v6"/><path d="M17 11h6"/></svg></div>
+        <h4>Peel Children's Aid Society</h4>
+        <p>Board Member — child welfare, family support, and community safety</p>
+      </div>
+      <div class="partner-card reveal">
+        <div class="partner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <h4>POGO</h4>
+        <p>Pediatric Oncology Group of Ontario — satellite centre partnerships and family support</p>
+      </div>
+      <div class="partner-card reveal">
+        <div class="partner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h4>Ronald McDonald House</h4>
+        <p>Supporting families of children receiving treatment away from home</p>
+      </div>
+      <div class="partner-card reveal">
+        <div class="partner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h4>Erin Oak Kids</h4>
+        <p>Children's treatment and rehabilitation services partnership</p>
+      </div>
+      <div class="partner-card reveal">
+        <div class="partner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M8 10h.01"/><path d="M16 10h.01"/><path d="M8 14h.01"/><path d="M16 14h.01"/></svg></div>
+        <h4>City of Mississauga</h4>
+        <p>Municipal partnership for community health programming</p>
+      </div>
+      <div class="partner-card reveal">
+        <div class="partner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h4>Emergency Services</h4>
+        <p>Ornge, Peel Regional Police, Mississauga Fire — emergency coordination</p>
+      </div>
+      <div class="partner-card reveal">
+        <div class="partner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <h4>Academic Partners</h4>
+        <p>Clinical education and nursing faculty across McMaster, George Brown, and Laurentian</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="education" id="education">
+  <div class="section-inner">
+    <p class="section-label reveal">Education</p>
+    <h2 class="section-heading reveal">Academic Foundation</h2>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-degree">Master of Business Administration</div>
+        <div class="edu-school">Laurentian University — Project Management</div>
+        <div class="edu-year">2021</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-degree">Bachelor of Science, Nursing</div>
+        <div class="edu-school">Laurentian University</div>
+        <div class="edu-year">2007 – 2013</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-degree">Diploma, Registered Nursing</div>
+        <div class="edu-school">Algonquin College of Applied Arts &amp; Technology</div>
+        <div class="edu-year">1994 – 1998</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <div class="section-inner">
+    <div class="philosophy-quote reveal">
+      I always try to make myself approachable and visible to the teams I work with. I take a tremendous amount of pride in connecting with people, contributing to a positive work culture focused on achieving our mutual goals.
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section class="connect" id="connect">
+  <div class="section-inner">
+    <p class="section-label reveal">Connect</p>
+    <h2 class="section-heading reveal">Let's Talk</h2>
+    <p class="connect-text reveal">Interested in discussing healthcare leadership, paediatric program development, or potential speaking opportunities? Connect with Kathy on LinkedIn.</p>
+    <a href="https://www.linkedin.com/in/kathyskelly/" target="_blank" rel="noopener" class="connect-btn reveal">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      Connect on LinkedIn
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Kathy Skelly, RN, BScN, MBA</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#story">My Story</a>
+    <a href="#impact">Impact</a>
+    <a href="#career">Career</a>
+    <a href="#speaking">Speaking</a>
+    <a href="#media">Media</a>
+    <a href="https://www.linkedin.com/in/kathyskelly/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 Kathy Skelly. All rights reserved.</div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+const hero = document.getElementById('hero');
+
+const navObs = new IntersectionObserver(([entry]) => {
+  nav.classList.toggle('hero-nav', entry.isIntersecting);
+  nav.classList.toggle('scrolled', !entry.isIntersecting);
+}, { threshold: 0.15 });
+navObs.observe(hero);
+
+const toggle = document.getElementById('navToggle');
+const links = document.getElementById('navLinks');
+const overlay = document.getElementById('navOverlay');
+
+toggle.addEventListener('click', () => {
+  links.classList.toggle('open');
+  overlay.classList.toggle('open');
+});
+
+overlay.addEventListener('click', () => {
+  links.classList.remove('open');
+  overlay.classList.remove('open');
+});
+
+links.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    links.classList.remove('open');
+    overlay.classList.remove('open');
+  });
+});
+
+const reveals = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => revealObs.observe(el));
+
+// Mobile scroll dot indicators
+if (window.innerWidth <= 768) {
+  document.querySelectorAll('.expertise-grid, .speaking-grid, .partners-grid, .edu-grid').forEach(grid => {
+    const cards = grid.children;
+    const count = cards.length;
+    if (count <= 1) return;
+
+    // Create dots container
+    const dotsWrap = document.createElement('div');
+    dotsWrap.className = 'scroll-dots';
+    for (let i = 0; i < count; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'scroll-dot' + (i === 0 ? ' active' : '');
+      dotsWrap.appendChild(dot);
+    }
+    grid.parentNode.insertBefore(dotsWrap, grid.nextSibling);
+
+    // Update dots on scroll
+    const dots = dotsWrap.querySelectorAll('.scroll-dot');
+    grid.addEventListener('scroll', () => {
+      const scrollLeft = grid.scrollLeft;
+      const cardWidth = cards[0].offsetWidth + 16; // card width + gap
+      const activeIndex = Math.round(scrollLeft / cardWidth);
+      dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
+    });
+  });
+}
+</script>
+
+</body>
+</html>
